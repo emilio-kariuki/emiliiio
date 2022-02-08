@@ -2,6 +2,7 @@
 
 import 'package:emiliiio/Constants/colors.dart';
 import 'package:emiliiio/authentication/login.dart';
+import 'package:emiliiio/build/Home/home.dart';
 import 'package:emiliiio/build/custom_box.dart';
 import 'package:emiliiio/build/custom_button.dart';
 import 'package:emiliiio/build/fields/build_circle.dart';
@@ -163,7 +164,8 @@ class _RegisterState extends State<Register> {
                     EdgeInsets.only(left: 70, right: 70, top: 20, bottom: 10),
                 child: CustomButton(
                     func: () {
-                      setState(() {
+                      setState(() async {
+                        namme = user?.displayName.toString() as String;
                         if (name.text == "" &&
                             email.text == "" &&
                             password.text == "") {
@@ -180,6 +182,8 @@ class _RegisterState extends State<Register> {
                         } else {
                           Auth().register(email.text, password.text, context);
                           print("successful");
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Home()));
                         }
                       });
                       print("Clicked");
@@ -224,9 +228,7 @@ class _RegisterState extends State<Register> {
                     func: () async {
                       await googleSignIn.signIn();
 
-                      setState(() {
-                        namme = user?.displayName.toString() as String;
-                      });
+                      setState(() {});
                     },
                   ),
                   BuildCircle(
