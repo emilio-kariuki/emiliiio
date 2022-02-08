@@ -157,10 +157,10 @@ class _RegisterState extends State<Register> {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.only(
-                    left: 70, right: 70, top: 20, bottom: 10),
+                padding:
+                    EdgeInsets.only(left: 70, right: 70, top: 20, bottom: 10),
                 child: CustomButton(
-                    func: ()  {
+                    func: () {
                       setState(() {
                         if (name.text == "" &&
                             email.text == "" &&
@@ -222,6 +222,7 @@ class _RegisterState extends State<Register> {
                     func: () async {
                       await googleSignIn.signIn();
                       setState(() {
+                        print(u);
                       });
                     },
                   ),
