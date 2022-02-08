@@ -28,10 +28,12 @@ class _RegisterState extends State<Register> {
   bool isUserNameValidate = false;
   FirebaseAuth auth = FirebaseAuth.instance;
   final formKey = GlobalKey<FormState>();
+  late String namme;
 
   @override
   Widget build(BuildContext context) {
     GoogleSignInAccount? user = googleSignIn.currentUser;
+
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kprimaryColor,
@@ -221,8 +223,9 @@ class _RegisterState extends State<Register> {
                     svgUrl: "assets/svg/google.svg",
                     func: () async {
                       await googleSignIn.signIn();
+
                       setState(() {
-                        print(user?.displayName.toString());
+                        namme = user?.displayName.toString() as String;
                       });
                     },
                   ),
