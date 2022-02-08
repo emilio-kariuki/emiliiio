@@ -222,7 +222,7 @@ class _RegisterState extends State<Register> {
                     func: () async {
                       await googleSignIn.signIn();
                       setState(() {
-                        print(u);
+                        print(user?.displayName.toString());
                       });
                     },
                   ),
